@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link href="img/logo/attnlg.jpg" rel="icon">
+  <title>Dashboard</title>
+  
+  <!-- face recognition scripts -->
+  <script defer src="face-api.min.js"></script>
+  <script defer src="script1.js"></script>
+  <!-- face recognition scripts -->
+  <style>
+    body {
+      padding: 70px;
+      margin: 0;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: flex-start;
+    }
+
+    video {
+      width: 50%;
+      height: auto;
+    }
+
+    canvas {
+      width: 50%;
+      position: absolute;
+    }
+
+  
+  </style>
+</head>
+
+<body>
+    <video id="video" width="600" height="450" autoplay></video>
+    <audio id="audio" src="correct.mp3"></audio>
+    <button id="printButton" style="margin-top: 38%;color: #fff;background-color: #6777ef;
+    border-color: #6777ef;border-radius: 0.25rem;box-shadow: 0 .125rem .25rem 0 rgba(58,59,69,.2);padding: 10px;">Take Attendance </button>
+ 
+   
+ 
+</body>
+
+</html>

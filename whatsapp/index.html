@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    </head>
+<body>
+    <a href="sharelocation/index.html" style="margin-top: 38%;color: #fff;background-color: #6777ef;
+    border-color: #6777ef;border-radius: 0.25rem;box-shadow: 0 .125rem .25rem 0 rgba(58,59,69,.2);padding: 10px;">Share Location</a>
+<script>
+$(document).ready(function() { 
+    if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      // Extract latitude and longitude
+      var latitude = position.coords.latitude;
+      var longitude = position.coords.longitude;
+      console.log(latitude)
+    $.post(
+        'http://localhost/final_face_reconition_system/whatsapp/whatsapp.php',
+
+        {
+            latitude:latitude,
+            longitude:longitude,
+        },function(data){
+            console.log(data)
+    });
+});
+    }
+
+});
+
+</script>
+
+</body>
+</html>

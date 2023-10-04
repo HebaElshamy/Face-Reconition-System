@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  </head>
+<body>
+
+<p id="demo"></p>
+
+<script>
+
+
+  function getLocation() {
+   
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function(position) {
+        // Extract latitude and longitude
+        var latitude = position.coords.latitude;
+        var longitude = position.coords.longitude;
+        $.post(
+        'http://localhost/final_face_reconition_system/whatsapp/sharelocation/saveapp.php',
+
+        {
+            latitude:latitude,
+            longitude:longitude,
+        },function(data){
+            console.log(data)
+    });
+    
+        var url = 'https://www.google.com/maps?q=' + latitude + ',' + longitude;
+
+        // فتح الرابط في نافذة أو علامة تبويب مستعرض جديدة
+        window.open(url, '_blank');
+      }, showError);
+    } else {
+      x.innerHTML = "Geolocation is not supported by this browser.";
+    }
+
+    // قم بتحديث الصفحة كل دقيقة (60,000 مللي ثانية)
+    setTimeout(function() {
+      location.reload();
+    }, 60000);
+  }
+
+  var x = document.getElementById("demo");
+
+  // استدعاء وظيفة getLocation عند تحميل الصفحة لأول مرة
+  window.onload = getLocation;
+
+  function showError(error) {
+    switch (error.code) {
+      case error.PERMISSION_DENIED:
+        x.innerHTML = "المستخدم رفض الطلب للوصول إلى الموقع.";
+        break;
+      case error.POSITION_UNAVAILABLE:
+        x.innerHTML = "معلومات الموقع غير متوفرة.";
+        break;
+      case error.TIMEOUT:
+        x.innerHTML = "الطلب للحصول على معلومات الموقع تجاوز الحد الزمني.";
+        break;
+      case error.UNKNOWN_ERROR:
+        x.innerHTML = "حدث خطأ غير معروف.";
+        break;
+    }
+  }
+</script>
+
+</body>
+</html>
